@@ -31,17 +31,23 @@ type BankUser struct {
 }
 
 func Run(db *gorm.DB) {
-	db.AutoMigrate(&User{})
-	db.AutoMigrate(&BankUser{})
-	db.AutoMigrate(&CreditCard{})
+	// db.AutoMigrate(&User{})
+	// db.AutoMigrate(&BankUser{})
+	// db.AutoMigrate(&CreditCard{})
 
 	// user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
-	//
+	// //
 	// result := db.Create(&user) // 通过数据的指针来创建
-	// fmt.Println(result.RowsAffected)
-	// user.ID             // 返回插入数据的主键
-	// result.Error        // 返回 error
-	// result.RowsAffected // 返回插入记录的条数
+
+	// // 检查错误
+	// if result.Error != nil {
+	// 	log.Fatal(result.Error) // 处理错误
+	// }
+	// // 获取受影响的行数
+	// fmt.Println("插入记录数:", result.RowsAffected)
+
+	// // 获取插入后的主键值（假设ID是自增主键）
+	// fmt.Println("插入数据的ID:", user.ID)
 
 	// users := []*User{
 	// 	{Name: "Jinzhu", Age: 18, Birthday: time.Now()},
@@ -52,13 +58,13 @@ func Run(db *gorm.DB) {
 	// fmt.Println(users[0])
 
 	// db.Create(&BankUser{
-	// 	Name:       "jinzhu",
-	// 	CreditCard: CreditCard{Number: "411111111111"},
+	// 	Name:       "jinzhuss",
+	// 	CreditCard: CreditCard{Number: "5511111111111"},
 	// })
 
 	// user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 	// db.Clauses(clause.OnConflict{DoNothing: true}).Create(&user)
-	// user := User{Name: "Jinzhu", Age: 19, Birthday: time.Now()}
+	// user := User{Name: "Jinzhu", Age: 29, Birthday: time.Now()}
 	// user.ID = 1
 	// db.Clauses(clause.OnConflict{
 	// 	Columns:   []clause.Column{{Name: "name"}},

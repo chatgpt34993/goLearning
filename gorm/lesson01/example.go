@@ -2,6 +2,8 @@ package lesson01
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
 	"time"
 
 	"gorm.io/gorm"
@@ -45,8 +47,8 @@ type Blog2 struct {
 }
 
 func Run(db *gorm.DB) {
-	db.AutoMigrate(&User{})
-	// db.AutoMigrate(&Member{})
+	//db.AutoMigrate(&User{})
+	//db.AutoMigrate(&Member{})
 	// db.AutoMigrate(&Blog{})
 	// db.AutoMigrate(&Blog2{})
 
@@ -58,5 +60,12 @@ func Run(db *gorm.DB) {
 	// mem := Member{}
 	// db.Create(&mem)
 	// fmt.Println(mem.ID)
-	// db.Delete(&Member{}, 1)
+
+	db.Unscoped().First(&Member{}, 1)
+
+	result := db.Delete(&Member{}, 2)
+	if result.Error != nil {
+		log.Fatalf("删除失败: %v", result.Error)
+	}
+	fmt.Printf("删除的记录数: %d\n", result.RowsAffected) // 若为0表示未找到记录
 }

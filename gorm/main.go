@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myGorm/lesson01"
+	"myGorm/lesson04"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -15,5 +15,5 @@ func main() {
 	}
 
 	//InitDB(&Parent{}, &Child{})
-	lesson01.Run(db)
+	lesson04.Run(db)
 }
